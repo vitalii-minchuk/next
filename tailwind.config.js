@@ -24,16 +24,6 @@ module.exports = {
       top: {
         " 50%": "50%",
       },
-      backgroundColor: {
-        primary: "#F1F1F2",
-        blur: "#030303",
-      },
-      colors: {
-        primary: "rgb(22, 24, 35)",
-      },
-      height: {
-        "88vh": "88vh",
-      },
     },
   },
   plugins: [],

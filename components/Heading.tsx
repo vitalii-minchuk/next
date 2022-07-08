@@ -5,10 +5,10 @@ type HeadingProps = {
   tag?: keyof JSX.IntrinsicElements
 }
 
-const Heading: FC<HeadingProps> = ({tag, text}) => {
+const Heading: FC<HeadingProps> = ({ tag, text }) => {
   const Tag = tag || "h1"
   return (
-    <Tag>{text}</Tag>
+    <h1>{text}</h1>
   )
 }
 
