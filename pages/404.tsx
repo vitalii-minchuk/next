@@ -14,7 +14,7 @@ const Error = () => {
           className="object-cover"
         />
         <div className="absolute top-3 right-5 w-1/2 text-right md:right-10 sm:w-1/3">
-          <h1 className=" text-5xl font-bold mb-2 xs:text-7xl sm:text-8xl md:text-9xl">
+          <h1 className="text-5xl font-bold mb-2 xs:text-7xl sm:text-8xl md:text-9xl">
             <span className="bg-gradient-to-tr from-indigo-100 to-indigo-900 text-transparent bg-clip-text">404</span>
           </h1>
           <div className="text-sm sm:text-base md:text-lg font-bold">

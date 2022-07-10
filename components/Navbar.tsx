@@ -2,8 +2,8 @@ import Link from "next/link"
 
 const Navbar = () => {
   return (
-    <nav>
-      <ul className="flex">
+    <nav className="hidden xs:block">
+      <ul className="flex gap-2">
         <li>
           <Link href="/posts">
             <a>posts</a>
@@ -14,6 +14,7 @@ const Navbar = () => {
             <a>contacts</a>
           </Link>
         </li>
+        <li>about</li>
       </ul>
     </nav>
   )
