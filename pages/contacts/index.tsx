@@ -1,21 +1,64 @@
-import Link from "next/link"
 import { Fragment } from "react"
 
-const Contacts = () => {
+import { NextPage } from "next"
+import Head from "next/head"
+import Link from "next/link"
+import Heading from "../../components/Heading"
+
+export const getStaticProps = async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users")
+  const data = await response.json()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { contacts: data }
+  }
+}
+
+const Contacts: NextPage<ContactType[]> = ({ contacts }) => {
+
   return (
     <Fragment>
+      <Head>
+        <title>Contacts</title>
+      </Head>
       <div className="">
         <div className="max-w-6xl mx-auto px-2">
-          <div>Contacts list:</div>
-          <Link href="/contacts/contact">
-            <p>go to contact</p>
-          </Link>
-          <p className="text-base">Lorem ipsum dolor sutimus tempore repellat sint temporibus inventore fugiat, dolores, eos cumque reiciendis mollitia. Laudantium fugit nostrum unde saepe explicabo aliquam cum inventore aspernatur quam laborum consectetur similique reiciendis magni blanditiis voluptatem magnam et, repudiandae nulla nihil, repellendus distinctio cumque, dolores non. Laudantium magnam placeat ex dignissimos corrupti sapiente totam, eos alias rerum beatae labore minus nulla mollitia molestias consequatur eius, quis quibusdam magni iusto necessitatibus, repellendus nisi itaque est harum! Assumenda praesentium autem dolore adipisci ut voluptatem, excepturi illo soluta dicta tenetur dolores voluptates voluptatum ipsam, expedita distinctio quaerat! At laborum libero quam earum facere, nam vero doloremque reprehenderit aut soluta doloribus ducimus, nisi esse ea temporibus iste, quo adipisci recusandae quae! Doloribus minus, optio maiores corporis ad deleniti accusantium placeat perspiciatis consectetur deserunt aliquid asperiores eaque sapiente fuga laboriosam quae rerum magni. Odit dignissimos natus perspiciatis quidem debitis id incidunt a, laboriosam enim neque quasi itaque accusamus repudiandae, ea voluptatem, sequi architecto! Alias veritatis, minus dolorum eos sed odio ab necessitatibus praesentium mollitia at explicabo odit quos cum delectus ipsum saepe laborum quasi quaerat, tenetur ullam a, voluptatum esse! Iure numquam nihil amet voluptatibus minima distinctio est cumque, obcaecati vel quidem, sapiente ut totam autem quis tempora quam nemo in deserunt porro et fugiat ex molestiae! Deserunt aperiam aut aliquam at earum officiis perferendis delectus soluta ratione incidunt voluptas voluptatum accusamus odit assumenda similique, quia illum quaerat laboriosam illo? Sequi magnam nemo nihil adipisci repellendus asperiores distinctio id at laudantium quisquam! Quis minus quidem id voluptas accusamus placeat. Esse neque, tempore eos sequi explicabo necessitatibus similique temporibus recusandae. Enim, accusantium corrupti.</p>
+          <Heading text="Contacts list:" />
+          <ul>
+            {contacts?.map(contact => (
+              <li key={contact.id} className="text-center py-1">
+                <Link href={`/contacts/${contact.id}`}>
+                  <a>{contact.username}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    
     </Fragment>
   )
 }
 
 export default Contacts
+
+type ContactType = {
+  id: number
+  name: string
+  username: string
+  email: string
+  phone: string
+  address: AddressType
+}
+
+type AddressType = {
+  city: string
+  street: string
+  suite: string
+  zipcode: string
+}

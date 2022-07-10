@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: Montserrat, sans-serif;
+  }
+}
+
 html,
 body {
   padding: 0;
