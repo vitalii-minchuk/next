@@ -35,7 +35,7 @@ const Error: NextPage = () => {
             placeholder="blur"
           />
           <div className="absolute top-3 right-5 w-1/2 text-right md:right-10 sm:w-1/3">
-            <h1 className="text-5xl font-bold mb-2 xs:text-7xl sm:text-8xl md:text-9xl">
+            <h1 className="text-4xl font-bold mb-1 xs:text-7xl xs:mb-2 sm:text-8xl md:text-9xl">
               <span className="bg-gradient-to-tr from-indigo-100 to-indigo-900
               text-transparent bg-clip-text"
               >

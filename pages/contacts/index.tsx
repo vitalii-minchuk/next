@@ -1,11 +1,12 @@
 import { Fragment } from "react"
 
-import { NextPage } from "next"
+import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import Heading from "../../components/Heading"
+import { ContactType } from "../../types"
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/users")
   const data = await response.json()
 
@@ -20,7 +21,11 @@ export const getStaticProps = async () => {
   }
 }
 
-const Contacts: NextPage<ContactType[]> = ({ contacts }) => {
+interface IContacts {
+  contacts: ContactType[]
+}
+
+const Contacts: NextPage<IContacts> = ({ contacts }) => {
 
   return (
     <Fragment>
@@ -47,18 +52,3 @@ const Contacts: NextPage<ContactType[]> = ({ contacts }) => {
 
 export default Contacts
 
-type ContactType = {
-  id: number
-  name: string
-  username: string
-  email: string
-  phone: string
-  address: AddressType
-}
-
-type AddressType = {
-  city: string
-  street: string
-  suite: string
-  zipcode: string
-}

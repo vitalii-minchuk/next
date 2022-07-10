@@ -1,11 +1,13 @@
-import Head from 'next/head'
-import React, { Fragment } from 'react'
-import ContactInfo from '../../components/ContactInfo'
-import Heading from '../../components/Heading'
+import React, { Fragment } from "react"
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next"
+import Head from "next/head"
 
-export const getServerSideProps = async (context) => {
+import ContactInfo from "../../components/ContactInfo"
+import { ContactType } from "../../types"
+
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const { id } = context.params
-
+console.log(context)
   const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
   const data = await response.json()
 
@@ -20,7 +22,11 @@ export const getServerSideProps = async (context) => {
   }
 }
 
-const Contact = ({ contact }) => {
+interface IContact {
+  contact: ContactType
+}
+
+const Contact: NextPage<IContact> = ({ contact }) => {
   return (
     <Fragment>
       <Head>

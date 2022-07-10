@@ -1,5 +1,6 @@
-import Link from "next/link"
 import { Dispatch, FC, SetStateAction } from "react"
+import Link from "next/link"
+
 import DropdownMenu from "./DropdownMenu"
 import Login from "./Login"
 import Navbar from "./Navbar"
@@ -22,7 +23,9 @@ const Header: FC<IHeader> = ({ open, setOpen }) => {
         <div className="max-w-6xl mx-auto px-2">
           <div className="h-12 flex justify-between items-center">
             <Link href="/">
-              <a className="text-base font-bold text-slate-50 tracking-widest md:text-xl">NEXT</a>
+              <a className="text-base font-bold text-slate-50 tracking-widest md:text-xl">
+                NEXT
+              </a>
             </Link>
             <div className="flex gap-3 items-center">
               <Navbar navigation={navigation} />
