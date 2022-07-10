@@ -3,9 +3,24 @@ import { Fragment } from "react"
 import type { NextPage } from "next"
 import Head from "next/head"
 import Heading from "../components/Heading"
+import Socials from "../components/Socials"
 
+export const getStaticProps = async () => {
+  const response = await fetch(`${process.env.API_HOST}/socials/`)
+  const data = await response.json()
+console.log(data)
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
-const Home: NextPage = () => {
+  return {
+    props: { socials: data }
+  }
+}
+
+const Home: NextPage = ({ socials }) => {
   return (
     <Fragment>
       <Head>
@@ -19,7 +34,7 @@ const Home: NextPage = () => {
           </p>
         </div>
       </div>
-      
+      <Socials socials={socials} />
     </Fragment>
   )
 }
