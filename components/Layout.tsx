@@ -8,7 +8,7 @@ interface ILayout {
   children: ReactNode
 }
 
-const Layout: FC<ILayout> = ({ children}) => {
+const Layout: FC<ILayout> = ({ children }) => {
   const [isDropDownMenuOpen, setIsDropDownMenuOpen] = useState(false)
 
   return (

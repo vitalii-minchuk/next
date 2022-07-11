@@ -3,6 +3,7 @@ import { Fragment } from "react"
 import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import Link from "next/link"
+
 import Heading from "../../components/Heading"
 import { ContactType } from "../../types"
 

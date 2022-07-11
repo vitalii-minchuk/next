@@ -6,9 +6,8 @@ import ContactInfo from "../../components/ContactInfo"
 import { ContactType } from "../../types"
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-  const { id } = context.params
-console.log(context)
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${context.params?.id}`)
   const data = await response.json()
 
   if (!data) {
