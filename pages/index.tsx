@@ -10,18 +10,25 @@ import { SocialsType } from "../types"
 import NextImg from "../public/nextImg.jpg"
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(`${process.env.API_HOST}/socials/`)
-  const data = await response.json()
-
-  if (!data) {
+  try {
+    const response = await fetch(`${process.env.API_HOST}/socials/`)
+    const data = await response.json()
+  
+    if (!data) {
+      return {
+        notFound: true,
+      }
+    }
+  
     return {
-      notFound: true,
+      props: { socials: data }
+    }
+  } catch (error) {
+    return {
+      props: { socials: null }
     }
   }
 
-  return {
-    props: { socials: data }
-  }
 }
 
 interface IHome {
